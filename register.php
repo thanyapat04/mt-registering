@@ -17,6 +17,7 @@
 
         if ($row && strlen($emp_id) === 6) {
             echo "<h2>ลงทะเบียนสำเร็จ</h2>";
+	    echo "รหัสพนักงาน: " . htmlspecialchars($emp_id) . "<br>";
             echo "ชื่อ: " . htmlspecialchars($row['emp_name']) . "<br>";
             echo "แผนก: " . htmlspecialchars($row['department']) . "<br>";
             echo "ตำแหน่ง: " . htmlspecialchars($row['position']) . "<br>";
@@ -51,11 +52,17 @@
                 echo '<h3>กรอกข้อมูลด้วยตนเอง</h3>';
                 ?>
                 <form name="addform" method="POST" action="register_manual.php">
-        		รหัสพนักงาน: <input type="text" name="new_emp_id" value="" size="10" /> <br>
-			ชื่อ-นามสกุล: <input type="text" name="new_emp_name" value="" size="20" /> <br>
-			แผนก: <input type="text" name="new_department" value="" size="20" /> <br>
-			ตำแหน่ง: <input type="text" name="new_position" value="" size="20" /> <br>
-        		<input type="submit" value="Submit"/>	
+        	    <label for="new_emp_id">รหัสพนักงาน:</label>
+                    <input type="text" id="new_emp_id" name="new_emp_id" value="" size="10" required /><br>
+                    
+                    <label for="new_emp_name">ชื่อ-นามสกุล:</label>
+                    <input type="text" id="new_emp_name" name="new_emp_name" value="" size="20" required /><br>
+                    
+                    <label for="new_department">แผนก:</label>
+                    <input type="text" id="new_department" name="new_department" value="" size="20" required /><br>
+                    
+                    <label for="new_position">ตำแหน่ง:</label>
+                    <input type="text" id="new_position" name="new_position" value="" size="20" required /><br>
      		</form>
                 <?php
                 echo '</div>'; // close additional-form
