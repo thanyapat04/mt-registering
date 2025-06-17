@@ -1,6 +1,7 @@
 <?php
-if (file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
-    return false; // serve the requested resource as-is
+if (file_exists(__DIR__ . $_SERVER['REQUEST_URI'])) {
+    return false;
 }
-include 'index.html'; // fallback to index.html
+// fallback: ไปที่ index.html เสมอ
+include __DIR__ . '/index.html';
 ?>
