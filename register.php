@@ -56,13 +56,14 @@
                     <input type="text" id="new_emp_id" name="new_emp_id" value="" size="10" required /><br>
                     
                     <label for="new_emp_name">ชื่อ-นามสกุล:</label>
-                    <input type="text" id="new_emp_name" name="new_emp_name" value="" size="20" required /><br>
+                    <input type="text" id="new_emp_name" name="new_emp_name" value="" size="30" required /><br>
                     
                     <label for="new_department">แผนก:</label>
-                    <input type="text" id="new_department" name="new_department" value="" size="20" required /><br>
+                    <input type="text" id="new_department" name="new_department" value="" size="30" required /><br>
                     
                     <label for="new_position">ตำแหน่ง:</label>
-                    <input type="text" id="new_position" name="new_position" value="" size="20" required /><br>
+                    <input type="text" id="new_position" name="new_position" value="" size="30" required /><br>
+		    <input type="submit" value="Submit"/>
      		</form>
                 <?php
                 echo '</div>'; // close additional-form
