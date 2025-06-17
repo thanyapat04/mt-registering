@@ -20,6 +20,26 @@
             echo "ชื่อ: " . htmlspecialchars($row['emp_name']) . "<br>";
             echo "แผนก: " . htmlspecialchars($row['department']) . "<br>";
             echo "ตำแหน่ง: " . htmlspecialchars($row['position']) . "<br>";
+		
+	    $url = "https://script.google.com/macros/s/AKfycbxpaqzlOWrsq6GmmZkh8RUnQBwOddtnqNAwsY6C87Rrull0ZCcgRgkHIyRW1JuOQLh7/exec";
+	    $data = array(
+                'รหัสพนักงาน' => $emp_id,
+                'ชื่อ' => $row['emp_name'],
+                'แผนก' => $row['department'],
+                'ตำแหน่ง' => $row['position']
+            );
+
+            $options = array(
+                'http' => array(
+                    'header'  => "Content-type: application/json",
+                    'method'  => 'POST',
+                    'content' => json_encode($data),
+                ),
+            );
+
+            $context = stream_context_create($options);
+            $result = file_get_contents($url, false, $context);
+		
         } else {
             echo "รหัสไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง";
         }
