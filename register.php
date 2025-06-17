@@ -22,7 +22,7 @@
             echo "แผนก: " . htmlspecialchars($row['department']) . "<br>";
             echo "ตำแหน่ง: " . htmlspecialchars($row['position']) . "<br>";
 		
-	    $url = "https://script.google.com/macros/s/AKfycbz4iNlfCJwOXhsTNBD5qPNFJz4FGWaf_R9GNTGcCpkF5a0cSqTpfrbXstsp3zsO_YBp/exec";
+	    $url = "https://script.google.com/macros/s/AKfycbw-vXHVAZL0j4i67rwvzJ2wae8qpHscNLkPUxyIak82kdgucCvkR1Py6f-j3OKQZaEo/exec";
 	    $data = array(
                 'รหัสพนักงาน' => $emp_id,
                 'ชื่อ' => $row['emp_name'],
