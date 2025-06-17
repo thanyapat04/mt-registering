@@ -11,9 +11,9 @@
         $new_position = $_POST['new_position'] ?? '';
 
         // ทำการตรวจสอบข้อมูลพื้นฐาน
-        if (empty($new_emp_id) || strlen($new_emp_id) !== 6) {
+        if (empty($new_emp_id) || empty($new_emp_name) || empty($new_department) || empty($new_position) || strlen($new_emp_id) !== 6) {
             echo "<h2>ข้อผิดพลาด:</h2>";
-            echo "<p>รหัสพนักงานไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง</p>";
+            echo "<p>ข้อมูลไม่ถูกต้องหรือไม่ครบถ้วน กรุณาลองใหม่อีกครั้ง</p>";
             echo '<button onclick="window.history.back()">ย้อนกลับ</button>';
             exit();
         }
