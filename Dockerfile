@@ -11,4 +11,4 @@ COPY . /app
 WORKDIR /app
 
 # เปิด PHP built-in server ที่ port 10000 (Render รองรับ)
-CMD ["php", "-S", "0.0.0.0:10000"]
+CMD ["php", "-S", "0.0.0.0:10000", "router.php"]
