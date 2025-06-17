@@ -68,7 +68,6 @@
                 echo '</div>'; // close additional-form
             }
    	}
-        }
 
     } catch (PDOException $e) {
         echo "เกิดข้อผิดพลาด: " . $e->getMessage();
