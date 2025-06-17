@@ -20,7 +20,7 @@
 
         // ส่งข้อมูลไป Google Apps Script (ปรับปรุงคอลัมน์ให้ตรงกับ Sheets)
         // ตรวจสอบให้แน่ใจว่า URL นี้รับข้อมูลประเภทนี้ได้
-        $url = "https://script.google.com/macros/s/AKfycbxpaqzlOWrsq6GmmZkh8RUnQBwOddtnqNAwsY6C87Rrull0ZCcgRgkHIyRW1JuOQLh7/exec"; 
+        $url = "https://script.google.com/macros/s/AKfycbz4iNlfCJwOXhsTNBD5qPNFJz4FGWaf_R9GNTGcCpkF5a0cSqTpfrbXstsp3zsO_YBp/exec"; 
         $data = array(
             'รหัสพนักงาน' => $new_emp_id, 
             'ชื่อ' => $new_emp_name,
