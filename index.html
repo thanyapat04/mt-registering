@@ -2,33 +2,51 @@
 <head>
     <meta charset="UTF-8">
     <title>แบบฟอร์มลงทะเบียนการประชุม</title>
+    <!-- Semantic UI CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body class="ui container" style="margin-top: 40px;">
+    
     <?php
+    try {
         $db = new PDO('sqlite:meeting.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
         $schedule = $db->prepare("SELECT * FROM schedule ORDER BY date DESC LIMIT 1");
         $schedule->execute();
     
-        $head = $schedule->fetch_assoc();
+        $head = $schedule->fetch(PDO::FETCH_ASSOC); // เปลี่ยนจาก fetch_assoc เป็น fetch(PDO::FETCH_ASSOC)
+    
         if ($head) {
-            echo "<h2>หัวข้อการประชุม: " . htmlspecialchars($head["topic"]) . "</h2>";
-            echo "<p>วันที่ " . htmlspecialchars($head["date"]) . 
-                 " เวลา " . htmlspecialchars($head["start_time"]) . 
+            echo '<div class="ui raised blue segment">';
+            echo "<h2 class='ui header'>หัวข้อการประชุม: " . htmlspecialchars($head["topic"]) . "</h2>";
+            echo "<p><strong>วันที่:</strong> " . htmlspecialchars($head["date"]) . 
+                 " <strong>เวลา:</strong> " . htmlspecialchars($head["start_time"]) . 
                  " - " . htmlspecialchars($head["end_time"]). "</p>";
-            echo "<p>ณ ห้องประชุม " . htmlspecialchars($head["room"]) . 
+            echo "<p><strong>สถานที่:</strong> ห้องประชุม " . htmlspecialchars($head["room"]) . 
                  " ชั้น " . htmlspecialchars($head["floor"]) . 
                  " อาคาร " . htmlspecialchars($head["building"]) . "</p>";
+            echo '</div>';
         } else {
-        echo "<p>ไม่พบข้อมูลการประชุม</p>";
+            echo "<div class='ui message warning'>ไม่พบข้อมูลการประชุม</div>";
+        }
+    } catch (PDOException $e) {
+        echo "<div class='ui message error'>เกิดข้อผิดพลาด: " . htmlspecialchars($e->getMessage()) . "</div>";
     }
     ?>
-    <form name="mainform" method="POST" action="register.php">
-        รหัสพนักงาน: <input type="text" name="emp_id" value="" size="10" />
-        <input type="submit" value="Submit"/>	
+    
+    <form class="ui form" name="mainform" method="POST" action="register.php">
+        <div class="field">
+            รหัสพนักงาน: <input type="text" name="emp_id" value="" size="10" />
+        </div>
+        <button class="ui primary button" type="submit">ลงทะเบียน</button>	
         <br>
      </form>
-    <p><a href="login.php">เข้าสู่ระบบสำหรับเจ้าหน้าที่</a></p>
+    
+    <div style="margin-top: 20px;">
+        <a href="login.php" class="ui button">เข้าสู่ระบบสำหรับเจ้าหน้าที่</a>
+    </div>
+    
 </body>
 </html>
