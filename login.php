@@ -17,11 +17,11 @@
   $username = $_POST["username"];
   $password = $_POST["password"];
 
-  $user = $db->prepare("SELECT * FROM users WHERE username = :username LIMIT 1");
-  $user->bindValue(':username', $username);
-  $user->execute();
+  $login = $db->prepare("SELECT * FROM users WHERE username = :username LIMIT 1");
+  $login->bindValue(':username', $username);
+  $login->execute();
 
-  $log = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user = $login->fetch(PDO::FETCH_ASSOC);
   if ($user && password_verify($password, $user['password'])) {
         // เข้าสู่ระบบสำเร็จ
         $_SESSION["user"] = $user["username"];
