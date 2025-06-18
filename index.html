@@ -5,12 +5,24 @@
 </head>
 <body>
     <?php
-        $db = new PDO('sqlite:employee.db');
+        $db = new PDO('sqlite:meeting.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $select = $db->prepare("SELECT * FROM schedule");
-        $schedule = $select>query($sql);
-        $head = $schedule>fetch_assoc();
-        echo "<h1>หัวข้อการประชุม: " . htmlspecialchars($head["topic"]) . "</h1>" . "<br>";
+    
+        $schedule = $db->prepare("SELECT * FROM schedule ORDER BY date DESC LIMIT 1");
+        $schedule->execute();
+    
+        $head = $schedule->fetch_assoc();
+        if ($head) {
+            echo "<h2>หัวข้อการประชุม: " . htmlspecialchars($head["topic"]) . "</h2>";
+            echo "<p>วันที่ " . htmlspecialchars($head["date"]) . 
+                 " เวลา " . htmlspecialchars($head["start_time"]) . 
+                 " - " . htmlspecialchars($head["end_time"]). "</p>";
+            echo "<p>ณ ห้องประชุม " . htmlspecialchars($head["room"]) . 
+                 " ชั้น " . htmlspecialchars($head["floor"]) . 
+                 " อาคาร " . htmlspecialchars($head["building"]) . "</p>";
+        } else {
+        echo "<p>ไม่พบข้อมูลการประชุม</p>";
+    }
     ?>
     <form name="mainform" method="POST" action="register.php">
         รหัสพนักงาน: <input type="text" name="emp_id" value="" size="10" />
