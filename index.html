@@ -1,12 +1,22 @@
-<html>
+<html lang="th">
 <head>
+    <meta charset="UTF-8">
     <title>แบบฟอร์มลงทะเบียนการประชุม</title>
 </head>
 <body>
+    <?php
+    $db = new PDO('sqlite:employee.db');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $select = $db->prepare("SELECT * FROM schedule");
+    $schedule = $select>query($sql);
+    $head = $schedule>fetch_assoc();
+    echo "<h1>หัวข้อการประชุม: " . htmlspecialchars($head["topic"]) . "</h1>";
+    ?>
     <form name="mainform" method="POST" action="register.php">
         รหัสพนักงาน: <input type="text" name="emp_id" value="" size="10" />
-        <br>
         <input type="submit" value="Submit"/>	
+        <br>
      </form>
+    <p><a href="login.php">เข้าสู่ระบบสำหรับเจ้าหน้าที่</a></p>
 </body>
 </html>
