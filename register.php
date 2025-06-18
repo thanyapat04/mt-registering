@@ -5,11 +5,11 @@
 
     try {
         // เชื่อมต่อกับไฟล์ SQLite ชื่อ employee.db
-        $db = new PDO('sqlite:employee.db');
+        $db = new PDO('sqlite:meeting.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // เตรียมคำสั่ง SQL แบบปลอดภัย (Prepared Statement)
-        $stmt = $db->prepare("SELECT emp_name, department, position FROM employee WHERE emp_id = :emp_id");
+        $stmt = $db->prepare("SELECT emp_name, department, position FROM employee WHERE emp_id = :emp_id"); //table employee
         $stmt->bindValue(':emp_id', $emp_id, PDO::PARAM_STR);
         $stmt->execute();
 
