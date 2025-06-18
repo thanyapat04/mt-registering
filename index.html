@@ -5,12 +5,12 @@
 </head>
 <body>
     <?php
-    $db = new PDO('sqlite:employee.db');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $select = $db->prepare("SELECT * FROM schedule");
-    $schedule = $select>query($sql);
-    $head = $schedule>fetch_assoc();
-    echo "<h1>หัวข้อการประชุม: " . htmlspecialchars($head["topic"]) . "</h1>";
+        $db = new PDO('sqlite:employee.db');
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $select = $db->prepare("SELECT * FROM schedule");
+        $schedule = $select>query($sql);
+        $head = $schedule>fetch_assoc();
+        echo "<h1>หัวข้อการประชุม: " . htmlspecialchars($head["topic"]) . "</h1>" . "<br>";
     ?>
     <form name="mainform" method="POST" action="register.php">
         รหัสพนักงาน: <input type="text" name="emp_id" value="" size="10" />
