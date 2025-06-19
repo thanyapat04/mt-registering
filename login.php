@@ -18,7 +18,9 @@
     </style>
 </head>
 <body>
-  
+
+<div class="ui container">
+    <h2 class="ui dividing header">เข้าสู่ระบบเจ้าหน้าที่</h2>
 <?php
   session_start();
   $db = new PDO('sqlite:meeting.db');
@@ -40,15 +42,6 @@
         $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
     }
 ?>
-
-<div class="ui container">
-    <h2 class="ui dividing header">เข้าสู่ระบบเจ้าหน้าที่</h2>
-
-    <?php if ($error): ?>
-        <div class="ui red message">
-            <strong><?= htmlspecialchars($error) ?></strong>
-        </div>
-    <?php endif; ?>
 
     <form class="ui form" method="POST" action="">
         <div class="field">
