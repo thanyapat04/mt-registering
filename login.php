@@ -3,27 +3,30 @@
         $db = new PDO('sqlite:meeting.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         session_start();
-        
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-      
-        $users = $db->prepare("SELECT * FROM users WHERE username = :username LIMIT 1");
-        $users->bindValue(':username', $username);
-        $users->execute();
-      
-        $login = $users->fetch(PDO::FETCH_ASSOC);
-        if ($login && password_verify($password, $login['password'])) {
-              // เข้าสู่ระบบสำเร็จ
-              $_SESSION["user"] = $login["username"];
-              header("Location: detail.php"); // เปลี่ยนไปหน้าหลังล็อกอิน หน้่าแก้ไขรายละเอียดการประชุม
-              exit();
-          } else {
-              $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-          }
+    
+        // ตรวจสอบว่าแบบฟอร์มถูกส่งด้วย POST หรือไม่
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+    
+            $users = $db->prepare("SELECT * FROM users WHERE username = :username LIMIT 1");
+            $users->bindValue(':username', $username);
+            $users->execute();
+    
+            $login = $users->fetch(PDO::FETCH_ASSOC);
+            if ($login && password_verify($password, $login['password'])) {
+                // เข้าสู่ระบบสำเร็จ
+                $_SESSION["user"] = $login["username"];
+                header("Location: detail.php"); // เปลี่ยนไปหน้าหลังล็อกอิน
+                exit();
+            } else {
+                $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+            }
+        }
     } catch (PDOException $e) {
         $error = "เกิดข้อผิดพลาด: " . htmlspecialchars($e->getMessage());
     }
-  ?>
+?>
 
 <html lang="th">
 <head>
