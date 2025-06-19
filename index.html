@@ -13,7 +13,7 @@
         $db = new PDO('sqlite:meeting.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-        $schedule = $db->prepare("SELECT * FROM schedule ORDER BY date DESC LIMIT 1");
+        $schedule = $db->prepare("SELECT * FROM schedule WHERE id = 1");
         $schedule->execute();
     
         $head = $schedule->fetch(PDO::FETCH_ASSOC); // เปลี่ยนจาก fetch_assoc เป็น fetch(PDO::FETCH_ASSOC)
