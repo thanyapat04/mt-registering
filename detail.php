@@ -1,14 +1,3 @@
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <title>รายละเอียดการประชุม</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-</head>
-<body>
-
-<div class="ui container" style="padding-top: 30px;">
-    <h2 class="ui header">แก้ไขรายละเอียดการประชุม</h2>
-    
 <?php
 session_start();
 if (!isset($_SESSION["user"])) {
@@ -37,6 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // ดึงข้อมูลการประชุมล
 $schedule = $db->query("SELECT * FROM schedule WHERE id = 1")->fetch(PDO::FETCH_ASSOC);
 ?>
+
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>รายละเอียดการประชุม</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+
+<div class="ui container" style="padding-top: 30px;">
+    <h2 class="ui header">แก้ไขรายละเอียดการประชุม</h2>
 
     <?php if (!empty($success)): ?>
         <div class="ui green message">บันทึกสำเร็จ</div>
