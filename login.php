@@ -9,8 +9,8 @@ try {
             $username = $_POST["username"];
             $password = $_POST["password"];
     
-            $users = $db->prepare("SELECT * FROM users WHERE username = :username LIMIT 1");
-            $users->bindValue(':username', $username);
+            $users = $db->prepare("SELECT * FROM users WHERE username = :username");
+            $users->bindValue(':username', $username, PDO::PARAM_STR);
             $users->execute();
     
             $login = $users->fetch(PDO::FETCH_ASSOC);
