@@ -1,8 +1,10 @@
 <?php
+session_start();
 try {
         $db = new PDO('sqlite:meeting.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        session_start();
+        
+        $error = "";
     
         // ตรวจสอบว่าแบบฟอร์มถูกส่งด้วย POST หรือไม่
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
