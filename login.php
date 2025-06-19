@@ -1,28 +1,4 @@
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <title>เข้าสู่ระบบเจ้าหน้าที่</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            background: #f0f2f5;
-            padding: 50px;
-        }
-        .ui.form input {
-            font-size: 1em;
-        }
-        .ui.container {
-            max-width: 400px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="ui container">
-    <h2 class="ui dividing header">เข้าสู่ระบบเจ้าหน้าที่</h2>
-
-    <?php
+<?php
     try {
         $db = new PDO('sqlite:meeting.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -48,6 +24,30 @@
         $error = "เกิดข้อผิดพลาด: " . htmlspecialchars($e->getMessage());
     }
   ?>
+
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>เข้าสู่ระบบเจ้าหน้าที่</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: #f0f2f5;
+            padding: 50px;
+        }
+        .ui.form input {
+            font-size: 1em;
+        }
+        .ui.container {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ui container">
+    <h2 class="ui dividing header">เข้าสู่ระบบเจ้าหน้าที่</h2>
         
     <form class="ui form" method="POST" action="">
         <div class="field">
