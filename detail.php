@@ -39,7 +39,7 @@ $schedule = $db->query("SELECT * FROM schedule WHERE id = 1")->fetch(PDO::FETCH_
     <h2 class="ui header">แก้ไขรายละเอียดการประชุม</h2>
 
     <?php if (!empty($success)): ?>
-        <div class="ui green message">อัปเดตข้อมูลเรียบร้อยแล้ว</div>
+        <div class="ui green message">บันทึกข้อมูลเรียบร้อยแล้ว</div>
     <?php endif; ?>
 
     <form class="ui form" method="POST" action="">
@@ -52,7 +52,7 @@ $schedule = $db->query("SELECT * FROM schedule WHERE id = 1")->fetch(PDO::FETCH_
 
         <div class="two fields">
             <div class="field">
-                <label>วันที่</label>
+                <label>วันที่ <span style="color: gray;"> เช่น 12 พฤษภาคม 2568</span></label>
                 <input type="date" name="date" value="<?= htmlspecialchars($schedule['date']) ?>" required>
             </div>
             <div class="field">
