@@ -38,7 +38,7 @@
             echo '<p>ส่วนงานเต็ม: ' . htmlspecialchars($row['position']) . '</p>';
             echo '</div>';
 		
-	    $url = "https://script.google.com/macros/s/AKfycbz1dhdhpzMXyphDDy1RtngJeR2JmitOna2lsUjWPgdTDhRtQhEr_bgmqOjmknZK78Fd/exec";
+	    $url = "https://script.google.com/macros/s/AKfycbw_6qrFGrIN49AV6irVtprX9YvlxFERmhwS4Uf07Dmn0q3jTMbHnqajmedQ5zVLrLZ5/exec";
 	    $data = array(
                 'รหัสพนักงาน' => $emp_id,
                 'ชื่อ' => $row['emp_name'],
