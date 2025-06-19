@@ -34,16 +34,16 @@
             echo '<div class="header">ลงทะเบียนสำเร็จ</div>';
             echo '<p>รหัสพนักงาน: <strong>' . htmlspecialchars($emp_id) . '</strong></p>';
             echo '<p>ชื่อ: ' . htmlspecialchars($row['emp_name']) . '</p>';
-            echo '<p>แผนก: ' . htmlspecialchars($row['department']) . '</p>';
-            echo '<p>ตำแหน่ง: ' . htmlspecialchars($row['position']) . '</p>';
+            echo '<p>ฝ่าย: ' . htmlspecialchars($row['department']) . '</p>';
+            echo '<p>ส่วนงาน: ' . htmlspecialchars($row['position']) . '</p>';
             echo '</div>';
 		
 	    $url = "https://script.google.com/macros/s/AKfycbz1dhdhpzMXyphDDy1RtngJeR2JmitOna2lsUjWPgdTDhRtQhEr_bgmqOjmknZK78Fd/exec";
 	    $data = array(
                 'รหัสพนักงาน' => $emp_id,
                 'ชื่อ' => $row['emp_name'],
-                'แผนก' => $row['department'],
-                'ตำแหน่ง' => $row['position']
+                'ฝ่าย' => $row['department'],
+                'ส่วนงาน' => $row['position']
             );
 
             $options = array(
@@ -78,11 +78,11 @@
 	                <input type="text" id="new_emp_name" name="new_emp_name" required>
 	            </div>
 	            <div class="field">
-	                <label for="new_department">แผนก <span style="color: gray;">(optional)</span></label>
+	                <label for="new_department">ฝ่าย <span style="color: gray;">(optional)</span></label>
 	                <input type="text" id="new_department" name="new_department">
 	            </div>
 	            <div class="field">
-	                <label for="new_position">ตำแหน่ง <span style="color: gray;">(optional)</span></label>
+	                <label for="new_position">ส่วนงาน <span style="color: gray;">(optional)</span></label>
 	                <input type="text" id="new_position" name="new_position">
 	            </div>
 	            <button class="ui primary button" type="submit">ลงทะเบียน</button>
