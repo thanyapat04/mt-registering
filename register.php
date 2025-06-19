@@ -29,7 +29,7 @@
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($row && strlen($emp_id) === 6) {
+        if ($row && (strlen($emp_id) === 6 || strlen($emp_id) === 8)) {
             echo '<div class="ui positive message">';
             echo '<div class="header">ลงทะเบียนสำเร็จ</div>';
             echo '<p>รหัสพนักงาน: <strong>' . htmlspecialchars($emp_id) . '</strong></p>';
@@ -70,7 +70,7 @@
                 ?>
                 <form class="ui form" name="addform" method="POST" action="register_manual.php">
         	    <div class="field">
-	                <label for="new_emp_id">รหัสพนักงาน</label>
+	                <label for="new_emp_id">รหัสพนักงาน <span style="color: gray;"> (หากรหัสพนักงานมี 6 หลัก ไม่จำเป็นต้องใส่ 0 ด้านหน้า)</span></label>
 	                <input type="text" id="new_emp_id" name="new_emp_id" required>
 	            </div>
 	            <div class="field">
