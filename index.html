@@ -16,7 +16,7 @@
         $schedule = $db->prepare("SELECT * FROM schedule WHERE id = 1");
         $schedule->execute();
     
-        $head = $schedule->fetch(PDO::FETCH_ASSOC); // เปลี่ยนจาก fetch_assoc เป็น fetch(PDO::FETCH_ASSOC)
+        $head = $schedule->fetch(PDO::FETCH_ASSOC); 
     
         if ($head) {
             echo '<div class="ui raised blue segment">';
