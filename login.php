@@ -53,7 +53,7 @@
             <input type="password" name="password" required>
         </div>
         <button class="ui primary button" type="submit">เข้าสู่ระบบ</button>
-        <a href="index.html" class="ui button">ย้อนกลับ</a>
+        <button class="ui button" onclick="window.history.back()">ย้อนกลับ</button>
     </form>
 </div>
 
