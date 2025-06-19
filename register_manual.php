@@ -1,8 +1,14 @@
-<html>
+<html lang="th">
 <head>
+    <meta charset="UTF-8">
     <title>ลงทะเบียนการประชุมด้วยตนเอง</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body style="background-color: #f9f9f9; padding: 40px;">
+
+<div class="ui container">
+    
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_emp_id = $_POST['new_emp_id']; 
@@ -12,9 +18,11 @@
 
         // ทำการตรวจสอบข้อมูลพื้นฐาน
         if (empty($new_emp_id) || empty($new_emp_name) || strlen($new_emp_id) !== 6) {
-            echo "<h2>เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง</h2>";
-            echo "<p>ข้อมูลไม่ถูกต้อง รหัสพนักงานต้องเป็นเลข 6 เท่านั้น</p>";
-            echo '<button onclick="window.history.back()">ย้อนกลับ</button>';
+            echo '<div class="ui red message">';
+            echo '<h3 class="ui header">เกิดข้อผิดพลาด</h3>';
+            echo '<p>กรุณากรอกข้อมูลให้ถูกต้อง รหัสพนักงานต้องมีความยาว 6 ตัวอักษร</p>';
+            echo '<button class="ui button" onclick="window.history.back()">ย้อนกลับ</button>';
+            echo '</div>';
             exit();
         }
 
@@ -39,14 +47,16 @@
 
         $context = stream_context_create($options);
         $result = @file_get_contents($url, false, $context); // ใช้ @ เพื่อไม่ให้แสดง warning ถ้า Google Script มีปัญหา
-
-        echo "<h2>ลงทะเบียนสำเร็จ</h2>";
-        echo "รหัสพนักงาน: " . htmlspecialchars($new_emp_id) . "<br>";
-        echo "ชื่อ: " . htmlspecialchars($new_emp_name) . "<br>";
-        echo "แผนก: " . htmlspecialchars($new_department) . "<br>";
-        echo "ตำแหน่ง: " . htmlspecialchars($new_position) . "<br>";
-      
     } 
 ?>
+        <div class="ui positive message">
+            <h2 class="ui header">ลงทะเบียนสำเร็จ</h2>
+            <p><strong>รหัสพนักงาน:</strong> <?= htmlspecialchars($new_emp_id) ?></p>
+            <p><strong>ชื่อ:</strong> <?= htmlspecialchars($new_emp_name) ?></p>
+            <p><strong>แผนก:</strong> <?= htmlspecialchars($new_department) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
+            <p><strong>ตำแหน่ง:</strong> <?= htmlspecialchars($new_position) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
+        </div>
+
+</div>
 </body>
 </html>
