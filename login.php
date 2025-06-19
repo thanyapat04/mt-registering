@@ -1,5 +1,5 @@
 <?php
-    try {
+try {
         $db = new PDO('sqlite:meeting.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         session_start();
