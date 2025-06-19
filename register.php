@@ -78,11 +78,11 @@
 	                <input type="text" id="new_emp_name" name="new_emp_name" required>
 	            </div>
 	            <div class="field">
-	                <label for="new_department">แผนก</label>
+	                <label for="new_department">แผนก <span style="color: gray;">(optional)</span></label>
 	                <input type="text" id="new_department" name="new_department">
 	            </div>
 	            <div class="field">
-	                <label for="new_position">ตำแหน่ง</label>
+	                <label for="new_position">ตำแหน่ง <span style="color: gray;">(optional)</span></label>
 	                <input type="text" id="new_position" name="new_position">
 	            </div>
 	            <button class="ui primary button" type="submit">ลงทะเบียน</button>
