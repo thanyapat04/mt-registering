@@ -5,7 +5,7 @@ try {
         session_start();
     
         // ตรวจสอบว่าแบบฟอร์มถูกส่งด้วย POST หรือไม่
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $username = $_POST["username"];
             $password = $_POST["password"];
     
