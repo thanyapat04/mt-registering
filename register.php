@@ -79,7 +79,7 @@
 	            </div>
 	            <div class="field">
 	                <label for="new_department">ส่วนงานย่อ <span style="color: gray;">(optional)</span></label>
-	                <input type="text" id="new_sec_short" name="new_sec">
+	                <input type="text" id="new_sec_short" name="new_sec_short">
 	            </div>
 	            <div class="field">
 	                <label for="new_position">ส่วนงานเต็ม <span style="color: gray;">(optional)</span></label>
