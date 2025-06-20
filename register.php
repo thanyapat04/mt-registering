@@ -18,10 +18,9 @@
 	$emp_id = $_POST['emp_id'];
 
     try {
-        // เชื่อมต่อกับไฟล์ SQLite ชื่อ RegisterForm.db
-        $db = new PDO('sqlite:RegisterForm.db');
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+        // เชื่อมต่อกับไฟล์ SQLite 
+        require_once __DIR__ . '/download_db.php';
+	    
         // เตรียมคำสั่ง SQL แบบปลอดภัย (Prepared Statement)
         $stmt = $db->prepare("SELECT * FROM employee WHERE emp_id = :emp_id"); //table employee
         $stmt->bindValue(':emp_id', $emp_id, PDO::PARAM_STR);
