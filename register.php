@@ -23,7 +23,7 @@
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // เตรียมคำสั่ง SQL แบบปลอดภัย (Prepared Statement)
-        $stmt = $db->prepare("SELECT emp_name, department, position FROM employee WHERE emp_id = :emp_id"); //table employee
+        $stmt = $db->prepare("SELECT * FROM employee WHERE emp_id = :emp_id"); //table employee
         $stmt->bindValue(':emp_id', $emp_id, PDO::PARAM_STR);
         $stmt->execute();
 
@@ -34,16 +34,16 @@
             echo '<div class="header">ลงทะเบียนสำเร็จ</div>';
             echo '<p>รหัสพนักงาน: <strong>' . htmlspecialchars($emp_id) . '</strong></p>';
             echo '<p>ชื่อ: ' . htmlspecialchars($row['emp_name']) . '</p>';
-            echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['department']) . '</p>';
-            echo '<p>ส่วนงานเต็ม: ' . htmlspecialchars($row['position']) . '</p>';
+            echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['ส่วนย่อ']) . '</p>';
+            echo '<p>ส่วนงานเต็ม: ' . htmlspecialchars($row['ส่วนเต็ม']) . '</p>';
             echo '</div>';
 		
 	    $url = "https://script.google.com/macros/s/AKfycbw_6qrFGrIN49AV6irVtprX9YvlxFERmhwS4Uf07Dmn0q3jTMbHnqajmedQ5zVLrLZ5/exec";
 	    $data = array(
                 'รหัสพนักงาน' => $emp_id,
                 'ชื่อ' => $row['emp_name'],
-                'ส่วนงานย่อ' => $row['department'],
-                'ส่วนงานเต็ม' => $row['position']
+                'ส่วนงานย่อ' => $row['ส่วนย่อ'],
+                'ส่วนงานเต็ม' => $row['ส่วนเต็ม']
             );
 
             $options = array(
@@ -79,11 +79,11 @@
 	            </div>
 	            <div class="field">
 	                <label for="new_department">ส่วนงานย่อ <span style="color: gray;">(optional)</span></label>
-	                <input type="text" id="new_department" name="new_department">
+	                <input type="text" id="new_sec" name="new_sec">
 	            </div>
 	            <div class="field">
 	                <label for="new_position">ส่วนงานเต็ม <span style="color: gray;">(optional)</span></label>
-	                <input type="text" id="new_position" name="new_position">
+	                <input type="text" id="new_sec_full" name="new_sec_full">
 	            </div>
 	            <button class="ui primary button" type="submit">ลงทะเบียน</button>
      		</form>
