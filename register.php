@@ -33,16 +33,16 @@
             echo '<div class="header">ลงทะเบียนสำเร็จ</div>';
             echo '<p>รหัสพนักงาน: <strong>' . htmlspecialchars($emp_id) . '</strong></p>';
             echo '<p>ชื่อ: ' . htmlspecialchars($row['emp_name']) . '</p>';
-            echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['ส่วนย่อ']) . '</p>';
-            echo '<p>ส่วนงานเต็ม: ' . htmlspecialchars($row['ส่วนเต็ม']) . '</p>';
+            echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['sec_short']) . '</p>';
+            echo '<p>ส่วนงานเต็ม: ' . htmlspecialchars($row['sec_full']) . '</p>';
             echo '</div>';
 		
 	    $url = "https://script.google.com/macros/s/AKfycbw_6qrFGrIN49AV6irVtprX9YvlxFERmhwS4Uf07Dmn0q3jTMbHnqajmedQ5zVLrLZ5/exec";
 	    $data = array(
                 'รหัสพนักงาน' => $emp_id,
                 'ชื่อ' => $row['emp_name'],
-                'ส่วนงานย่อ' => $row['ส่วนย่อ'],
-                'ส่วนงานเต็ม' => $row['ส่วนเต็ม']
+                'ส่วนงานย่อ' => $row['sec_short'],
+                'ส่วนงานเต็ม' => $row['sec_full']
             );
 
             $options = array(
@@ -78,7 +78,7 @@
 	            </div>
 	            <div class="field">
 	                <label for="new_department">ส่วนงานย่อ <span style="color: gray;">(optional)</span></label>
-	                <input type="text" id="new_sec" name="new_sec">
+	                <input type="text" id="new_sec_short" name="new_sec">
 	            </div>
 	            <div class="field">
 	                <label for="new_position">ส่วนงานเต็ม <span style="color: gray;">(optional)</span></label>
