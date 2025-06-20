@@ -10,7 +10,7 @@
     
     <?php
     try {
-        $db = new PDO('sqlite:meeting.db');
+        $db = new PDO('sqlite:RegisterForm.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
         $schedule = $db->prepare("SELECT * FROM schedule WHERE id = 1");
