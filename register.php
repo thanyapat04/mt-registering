@@ -31,6 +31,7 @@
         if ($row && (strlen($emp_id) === 6 || strlen($emp_id) === 8)) {
             echo '<div class="ui positive message">';
             echo '<div class="header">ลงทะเบียนสำเร็จ</div>';
+	    echo '<br>';
             echo '<p>รหัสพนักงาน: <strong>' . htmlspecialchars($emp_id) . '</strong></p>';
             echo '<p>ชื่อ: ' . htmlspecialchars($row['emp_name']) . '</p>';
             echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['sec_short'] ?? 'ไม่ระบุ') . '</p>';
