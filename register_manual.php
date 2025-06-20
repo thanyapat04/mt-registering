@@ -51,6 +51,7 @@
 ?>
         <div class="ui positive message">
             <h2 class="ui header">ลงทะเบียนสำเร็จ</h2><br>
+            <br>
             <p><strong>รหัสพนักงาน:</strong> <?= htmlspecialchars($new_emp_id) ?></p>
             <p><strong>ชื่อ:</strong> <?= htmlspecialchars($new_emp_name) ?></p>
             <p><strong>ส่วนงานย่อ:</strong> <?= htmlspecialchars($new_sec_short) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
