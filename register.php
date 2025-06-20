@@ -19,7 +19,7 @@
 
     try {
         // เชื่อมต่อกับไฟล์ SQLite ชื่อ RegisterForm.db
-        $db = new PDO('sqlite:/data/RegisterForm.db');
+        $db = new PDO('sqlite:RegisterForm.db');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // เตรียมคำสั่ง SQL แบบปลอดภัย (Prepared Statement)
