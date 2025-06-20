@@ -10,8 +10,7 @@
     
     <?php
     try {
-        $db = new PDO('sqlite:RegisterForm.db');
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        require_once __DIR__ . '/download_db.php';
     
         $schedule = $db->prepare("SELECT * FROM schedule WHERE id = 1");
         $schedule->execute();
