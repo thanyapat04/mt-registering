@@ -33,8 +33,8 @@
             echo '<div class="header">ลงทะเบียนสำเร็จ</div>';
             echo '<p>รหัสพนักงาน: <strong>' . htmlspecialchars($emp_id) . '</strong></p>';
             echo '<p>ชื่อ: ' . htmlspecialchars($row['emp_name']) . '</p>';
-            echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['sec_short']) . '</p>';
-            echo '<p>ส่วนงานเต็ม: ' . htmlspecialchars($row['sec_full']) . '</p>';
+            echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['sec_short'] ?? 'ไม่ระบุ') . '</p>';
+            echo '<p>ส่วนงานเต็ม: ' . htmlspecialchars($row['sec_full'] ?? 'ไม่ระบุ') . '</p>';
             echo '</div>';
 		
 	    $url = "https://script.google.com/macros/s/AKfycbw_6qrFGrIN49AV6irVtprX9YvlxFERmhwS4Uf07Dmn0q3jTMbHnqajmedQ5zVLrLZ5/exec";
