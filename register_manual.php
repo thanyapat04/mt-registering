@@ -13,14 +13,14 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_emp_id = $_POST['new_emp_id']; 
         $new_emp_name = $_POST['new_emp_name'];
-        $new_department = $_POST['new_department'];
-        $new_position = $_POST['new_position'] ?? '';
+        $new_department = $_POST['new_sec'] ?? '';
+        $new_position = $_POST['new_sec_full'] ?? '';
 
         // ทำการตรวจสอบข้อมูลพื้นฐาน
-        if (empty($new_emp_id) || empty($new_emp_name) || strlen($new_emp_id) !== 6) {
+        if (empty($new_emp_id) || empty($new_emp_name) || strlen($new_emp_id) !== 6 || strlen($new_emp_id) !== 8) {
             echo '<div class="ui red message">';
             echo '<h3 class="ui header">เกิดข้อผิดพลาด</h3>';
-            echo '<p>กรุณากรอกข้อมูลให้ถูกต้อง รหัสพนักงานต้องมีความยาว 6 ตัวอักษร</p>';
+            echo '<p>กรุณากรอกข้อมูลให้ถูกต้อง รหัสพนักงานต้องมีความยาว 6 หรือ 8 ตัวอักษร</p>';
             echo '<button class="ui button" onclick="window.history.back()">ย้อนกลับ</button>';
             echo '</div>';
             exit();
@@ -32,8 +32,8 @@
         $data = array(
             'รหัสพนักงาน' => $new_emp_id, 
             'ชื่อ' => $new_emp_name,
-            'แผนก' => $new_department,
-            'ตำแหน่ง' => $new_position, 
+            'ส่วนงานย่อ' => $new_sec,
+            'ส่วนงานเต็ม' => $new_sec_full, 
         );
 
         $options = array(
@@ -53,8 +53,8 @@
             <h2 class="ui header">ลงทะเบียนสำเร็จ</h2>
             <p><strong>รหัสพนักงาน:</strong> <?= htmlspecialchars($new_emp_id) ?></p>
             <p><strong>ชื่อ:</strong> <?= htmlspecialchars($new_emp_name) ?></p>
-            <p><strong>แผนก:</strong> <?= htmlspecialchars($new_department) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
-            <p><strong>ตำแหน่ง:</strong> <?= htmlspecialchars($new_position) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
+            <p><strong>ส่วนงานย่อ:</strong> <?= htmlspecialchars($new_sec) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
+            <p><strong>ส่วนงานเต็ม:</strong> <?= htmlspecialchars($new_sec_full) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
         </div>
 
 </div>
