@@ -17,7 +17,7 @@
         $new_sec_full = $_POST['new_sec_full'] ?? '';
 
         // ทำการตรวจสอบข้อมูลพื้นฐาน
-        if (empty($new_emp_id) || empty($new_emp_name) || strlen($new_emp_id) !== 6 || strlen($new_emp_id) !== 8) {
+        if (empty($new_emp_id) || empty($new_emp_name) || (strlen($new_emp_id) !== 6 || strlen($new_emp_id) !== 8)) {
             echo '<div class="ui red message">';
             echo '<h3 class="ui header">เกิดข้อผิดพลาด</h3>';
             echo '<p>กรุณากรอกข้อมูลให้ถูกต้อง รหัสพนักงานต้องมีความยาว 6 หรือ 8 ตัวอักษร</p>';
@@ -51,7 +51,6 @@
 ?>
         <div class="ui positive message">
             <h2 class="ui header">ลงทะเบียนสำเร็จ</h2><br>
-            <br>
             <p><strong>รหัสพนักงาน:</strong> <?= htmlspecialchars($new_emp_id) ?></p>
             <p><strong>ชื่อ:</strong> <?= htmlspecialchars($new_emp_name) ?></p>
             <p><strong>ส่วนงานย่อ:</strong> <?= htmlspecialchars($new_sec_short) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
