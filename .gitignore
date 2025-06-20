@@ -1,0 +1,9 @@
+# Ignore database
+RegisterForm.db
+
+# Ignore sensitive env file
+.env
+
+# Optional: macOS / log / cache
+.DS_Store
+*.log
