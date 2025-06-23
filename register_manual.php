@@ -17,7 +17,7 @@
         $new_sec_full = $_POST['new_sec_full'] ?? '';
 
         // ทำการตรวจสอบข้อมูลพื้นฐาน
-        if (strlen($new_emp_id) !== 6 && strlen($new_emp_id) !== 8) {
+        if (strlen($new_emp_id) < 6 || strlen($new_emp_id) > 8) {
             echo '<div class="ui red message">';
             echo '<h3 class="ui header">เกิดข้อผิดพลาด</h3>';
             echo '<p>กรุณากรอกข้อมูลให้ถูกต้อง รหัสพนักงานต้องมีความยาว 6 หรือ 8 ตัวอักษร</p>';
