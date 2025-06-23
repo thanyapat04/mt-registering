@@ -20,7 +20,7 @@
         if (strlen($new_emp_id) < 6 || strlen($new_emp_id) > 8) {
             echo '<div class="ui red message">';
             echo '<h3 class="ui header">เกิดข้อผิดพลาด</h3>';
-            echo '<p>กรุณากรอกข้อมูลให้ถูกต้อง รหัสพนักงานต้องมีความยาว 6 หรือ 8 ตัวอักษร</p>';
+            echo '<p>กรุณากรอกข้อมูลให้ถูกต้อง รหัสพนักงานต้องมีไม่ต่ำกว่า 6 หลัก และไม่เกิน 8 หลัก</p>';
             echo '<button class="ui button" onclick="window.history.back()">ย้อนกลับ</button>';
             echo '</div>';
             exit();
