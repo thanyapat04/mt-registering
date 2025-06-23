@@ -28,7 +28,7 @@
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($row && (strlen($emp_id) === 6 || strlen($emp_id) === 8)) {
+        if ($row && (strlen($emp_id) >= 6 && strlen($emp_id) <= 8)) {
             echo '<div class="ui positive message">';
             echo '<div class="header">ลงทะเบียนสำเร็จ</div>';
 	    echo '<br>';
