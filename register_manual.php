@@ -13,8 +13,9 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_emp_id = $_POST['new_emp_id']; 
         $new_emp_name = $_POST['new_emp_name'];
+        $new_position = $_POST['new_position'] ?? '';
         $new_sec_short = $_POST['new_sec_short'] ?? '';
-        $new_sec_full = $_POST['new_sec_full'] ?? '';
+        $new_cc = $_POST['new_cc'] ?? '';
 
         // ทำการตรวจสอบข้อมูลพื้นฐาน
         if (strlen($new_emp_id) < 6 || strlen($new_emp_id) > 8) {
@@ -32,8 +33,9 @@
         $data = array(
             'รหัสพนักงาน' => $new_emp_id, 
             'ชื่อ' => $new_emp_name,
+            'ตำแหน่ง' => $new_position,
             'ส่วนงานย่อ' => $new_sec_short,
-            'ส่วนงานเต็ม' => $new_sec_full, 
+            'ชื่อศูนย์ต้นทุน' => $new_cc, 
         );
 
         $options = array(
@@ -53,8 +55,9 @@
             <h2 class="ui header">ลงทะเบียนสำเร็จ</h2><br>
             <p><strong>รหัสพนักงาน:</strong> <?= htmlspecialchars($new_emp_id) ?></p>
             <p><strong>ชื่อ:</strong> <?= htmlspecialchars($new_emp_name) ?></p>
+            <p><strong>ตำแหน่ง:</strong> <?= htmlspecialchars($new_position) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
             <p><strong>ส่วนงานย่อ:</strong> <?= htmlspecialchars($new_sec_short) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
-            <p><strong>ส่วนงานเต็ม:</strong> <?= htmlspecialchars($new_sec_full) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
+            <p><strong>ชื่อศูนย์ต้นทุน:</strong> <?= htmlspecialchars($new_cc) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
         </div>
 
 </div>
