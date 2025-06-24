@@ -39,7 +39,7 @@
             echo '<p>ชื่อศูนย์ต้นทุน: ' . htmlspecialchars($row['cc_name'] ?? 'ไม่ระบุ') . '</p>';
             echo '</div>';
 		
-	    $url = "https://script.google.com/macros/s/AKfycbxeRlF3j8Ov8i9WH5uniV-EQajYAyKTBImmCu7KuxC8WDW2we_X5Pt0crQgcsDS_m3V/exec";
+	    $url = "https://script.google.com/macros/s/AKfycbyQcNpLCgjbeVAfGZwmK9suB5OuWPyGl2W5UJ98tIqumUk2-Yu9w9a-UzhjTjhtvcM/exec";
 	    $data = array(
                 'รหัสพนักงาน' => $emp_id,
                 'ชื่อ' => $row['emp_name'],
