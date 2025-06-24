@@ -34,16 +34,18 @@
 	    echo '<br>';
             echo '<p>รหัสพนักงาน: <strong>' . htmlspecialchars($emp_id) . '</strong></p>';
             echo '<p>ชื่อ: ' . htmlspecialchars($row['emp_name']) . '</p>';
+	    echo '<p>ตำแหน่ง: ' . htmlspecialchars($row['position'] ?? 'ไม่ระบุ') . '</p>';
             echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['sec_short'] ?? 'ไม่ระบุ') . '</p>';
-            echo '<p>ส่วนงานเต็ม: ' . htmlspecialchars($row['sec_full'] ?? 'ไม่ระบุ') . '</p>';
+            echo '<p>ชื่อศูนย์ต้นทุน: ' . htmlspecialchars($row['cc_name'] ?? 'ไม่ระบุ') . '</p>';
             echo '</div>';
 		
 	    $url = "https://script.google.com/macros/s/AKfycbxeRlF3j8Ov8i9WH5uniV-EQajYAyKTBImmCu7KuxC8WDW2we_X5Pt0crQgcsDS_m3V/exec";
 	    $data = array(
                 'รหัสพนักงาน' => $emp_id,
                 'ชื่อ' => $row['emp_name'],
+		'ตำแหน่ง' => $row['position'],
                 'ส่วนงานย่อ' => $row['sec_short'],
-                'ส่วนงานเต็ม' => $row['sec_full']
+                'ชื่อศูนย์ต้นทุน' => $row['cc_name']
             );
 
             $options = array(
@@ -70,20 +72,24 @@
                 ?>
                 <form class="ui form" name="addform" method="POST" action="register_manual.php">
         	    <div class="field">
-	                <label for="new_emp_id">รหัสพนักงาน <span style="color: gray;"> (หากรหัสพนักงานต่ำกว่า 8 หลัก ไม่จำเป็นต้องใส่ 0 ด้านหน้า)</span></label>
+	                <label for="new_emp_id">รหัสพนักงาน <span style="color: gray;"> (ไม่จำเป็นต้องใส่ 0 ด้านหน้า)</span></label>
 	                <input type="text" id="new_emp_id" name="new_emp_id" required>
 	            </div>
 	            <div class="field">
 	                <label for="new_emp_name">ชื่อ-นามสกุล</label>
 	                <input type="text" id="new_emp_name" name="new_emp_name" required>
 	            </div>
+		    <div class="field">
+	                <label for="new_position">ตำแหน่ง <span style="color: gray;">(optional)</span></label>
+	                <input type="text" id="new_position" name="new_position">
+	            </div>
 	            <div class="field">
-	                <label for="new_department">ส่วนงานย่อ <span style="color: gray;">(optional)</span></label>
+	                <label for="new_sec_short">ส่วนงานย่อ <span style="color: gray;">(optional)</span></label>
 	                <input type="text" id="new_sec_short" name="new_sec_short">
 	            </div>
 	            <div class="field">
-	                <label for="new_position">ส่วนงานเต็ม <span style="color: gray;">(optional)</span></label>
-	                <input type="text" id="new_sec_full" name="new_sec_full">
+	                <label for="new_cc">ชื่อศูนย์ต้นทุน <span style="color: gray;">(optional)</span></label>
+	                <input type="text" id="new_cc" name="new_cc">
 	            </div>
 	            <button class="ui primary button" type="submit">ลงทะเบียน</button>
      		</form>
