@@ -15,7 +15,7 @@
         $new_emp_name = $_POST['new_emp_name'];
         $new_position = $_POST['new_position'] ?? '';
         $new_sec_short = $_POST['new_sec_short'] ?? '';
-        $new_cc = $_POST['new_cc'] ?? '';
+        $new_cc_name = $_POST['new_cc_name'] ?? '';
 
         // ทำการตรวจสอบข้อมูลพื้นฐาน
         if (strlen($new_emp_id) < 6 || strlen($new_emp_id) > 8) {
@@ -35,7 +35,7 @@
             'ชื่อ' => $new_emp_name,
             'ตำแหน่ง' => $new_position,
             'ส่วนงานย่อ' => $new_sec_short,
-            'ชื่อศูนย์ต้นทุน' => $new_cc, 
+            'ชื่อศูนย์ต้นทุน' => $new_cc_name, 
         );
 
         $options = array(
@@ -57,7 +57,7 @@
             <p><strong>ชื่อ:</strong> <?= htmlspecialchars($new_emp_name) ?></p>
             <p><strong>ตำแหน่ง:</strong> <?= htmlspecialchars($new_position) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
             <p><strong>ส่วนงานย่อ:</strong> <?= htmlspecialchars($new_sec_short) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
-            <p><strong>ชื่อศูนย์ต้นทุน:</strong> <?= htmlspecialchars($new_cc) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
+            <p><strong>ชื่อศูนย์ต้นทุน:</strong> <?= htmlspecialchars($new_cc_name) ?: '<span style="color:gray;">(ไม่ระบุ)</span>' ?></p>
         </div>
 
 </div>
