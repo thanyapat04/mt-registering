@@ -72,7 +72,7 @@
                 ?>
                 <form class="ui form" name="addform" method="POST" action="register_manual.php">
         	    <div class="field">
-	                <label for="new_emp_id">รหัสพนักงาน <span style="color: gray;"> (ไม่จำเป็นต้องใส่ 0 ด้านหน้า)</span></label>
+	                <label for="new_emp_id">รหัสพนักงาน <span style="color: gray;"> (ไม่ต้องใส่ 0 ด้านหน้า)</span></label>
 	                <input type="text" id="new_emp_id" name="new_emp_id" required>
 	            </div>
 	            <div class="field">
@@ -88,8 +88,8 @@
 	                <input type="text" id="new_sec_short" name="new_sec_short">
 	            </div>
 	            <div class="field">
-	                <label for="new_cc">ชื่อศูนย์ต้นทุน <span style="color: gray;">(optional)</span></label>
-	                <input type="text" id="new_cc" name="new_cc">
+	                <label for="new_cc_name">ชื่อศูนย์ต้นทุน <span style="color: gray;">(optional)</span></label>
+	                <input type="text" id="new_cc_name" name="new_cc_name">
 	            </div>
 	            <button class="ui primary button" type="submit">ลงทะเบียน</button>
      		</form>
