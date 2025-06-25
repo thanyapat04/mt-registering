@@ -30,7 +30,9 @@ try {
                     ':hashed' => $hashed,
                     ':username' => $user['username']
                 ]);
-            } 
+            } else {
+                echo "รหัสผ่านถูกต้อง";
+            }
             
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION["user"] = $user["username"];
