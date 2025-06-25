@@ -25,7 +25,7 @@
                  " - " . htmlspecialchars($head["end_time"]). "</p>";
             echo "<p><strong>สถานที่:</strong> ห้องประชุม " . htmlspecialchars($head["room"]) . 
                  " ชั้น " . htmlspecialchars($head["floor"]) . 
-                 " อาคาร " . htmlspecialchars($head["building"]) . "</p>";
+                 htmlspecialchars($head["building"]) . "</p>";
             echo '</div>';
         } else {
             echo "<div class='ui message warning'>ไม่พบข้อมูลการประชุม</div>";
