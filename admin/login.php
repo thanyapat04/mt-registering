@@ -42,7 +42,7 @@ try {
                         header("Location: detail.php");
                         exit();
                 } else {
-                        $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+                        $error = "รหัสผ่านไม่ถูกต้อง";
                 }
                 
            } else {
