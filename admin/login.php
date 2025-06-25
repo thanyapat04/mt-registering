@@ -28,36 +28,26 @@ try {
                         $hashed = password_hash($plain_pw, PASSWORD_DEFAULT);
                 
                         $update = $db->prepare("UPDATE users SET password = :hashed WHERE username = :username");
-                        $update->execute([
+                         $update->execute([
                             ':hashed' => $hashed,
                             ':username' => $user['username']
                         ]);
-                        
+
                         $stmt->execute();
                         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                        
-                        if (password_verify($password, $user['password'])) {
-                                $_SESSION["user"] = $user["username"];
-                                header("Location: detail.php");
-                                exit();
-                        } else {
-                                $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-                        }
-                        
+                    }
+                
+                if (password_verify($password, $user['password'])) {
+                        $_SESSION["user"] = $user["username"];
+                        header("Location: detail.php");
+                        exit();
                 } else {
-                        if (password_verify($password, $user['password'])) {
-                                $_SESSION["user"] = $user["username"];
-                                header("Location: detail.php");
-                                exit();
-                        } else {
-                                $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-                        }
+                        $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
                 }
                 
-                
-             } else {
-                    $error = "ไม่พบชื่อผู้ใช้ในระบบ";
-             }
+           } else {
+                $error = "ไม่พบชื่อผู้ใช้ในระบบ";
+           }
 
         }
     } catch (PDOException $e) {
@@ -100,6 +90,10 @@ try {
         </div>
         <button class="ui primary button" type="submit">เข้าสู่ระบบ</button>
     </form>
+
+<?php if (!empty($error)): ?>
+    <div class="ui red message"><?= htmlspecialchars($error) ?></div>
+<?php endif; ?>
 
 </div>
 
