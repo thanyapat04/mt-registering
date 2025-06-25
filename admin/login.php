@@ -18,6 +18,7 @@ try {
             $stmt = $db->prepare("SELECT * FROM users WHERE username = :username");
             $stmt->bindValue(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
+                
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             $plain_pw = $user['password'];
                 
