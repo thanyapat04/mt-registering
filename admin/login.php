@@ -19,9 +19,11 @@ try {
             $stmt->bindValue(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $plain_pw = $user['password'];
                 
             if (!preg_match('/^\$2y\$/', $plain_pw)) {
-                $hashed = password_hash($password, PASSWORD_DEFAULT);
+                $hashed = password_hash($plain_pw, PASSWORD_DEFAULT);
         
                 $update = $db->prepare("UPDATE users SET password = :hashed WHERE username = :username");
                 $update->execute([
