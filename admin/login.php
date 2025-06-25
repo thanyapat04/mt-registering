@@ -17,10 +17,10 @@ try {
 
             $stmt = $db->prepare("SELECT * FROM users WHERE username = :username");
             $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+            $plain_pw = $user['password'];
+                
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            $plain_pw = $user['password'];
                 
             if (!preg_match('/^\$2y\$/', $plain_pw)) {
                 $hashed = password_hash($plain_pw, PASSWORD_DEFAULT);
@@ -30,16 +30,23 @@ try {
                     ':hashed' => $hashed,
                     ':username' => $user['username']
                 ]);
+                    
+                if ($user && password_verify($password, $user['password'])) {
+                    $_SESSION["user"] = $user["username"];
+                    header("Location: detail.php"); // เปลี่ยนไปหน้าหลังล็อกอิน
+                    exit();
+                } else {
+                    $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+                    }
+                    
             } else {
-                echo "รหัสผ่านถูกต้อง";
-            }
-            
-            if ($user && password_verify($password, $user['password'])) {
-                $_SESSION["user"] = $user["username"];
-                header("Location: detail.php"); // เปลี่ยนไปหน้าหลังล็อกอิน
-                exit();
-            } else {
-                $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+                if ($user && password_verify($password, $user['password'])) {
+                    $_SESSION["user"] = $user["username"];
+                    header("Location: detail.php"); // เปลี่ยนไปหน้าหลังล็อกอิน
+                    exit();
+                } else {
+                    $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+                }
             }
             
         }
