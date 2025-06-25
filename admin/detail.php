@@ -5,8 +5,8 @@ if (!isset($_SESSION["user"])) {
     exit();
 }
 
-$db = new PDO('sqlite:meeting.db');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// เชื่อมต่อกับไฟล์ SQLite 
+        require_once __DIR__ . '/download_db.php';
 
 // เมื่อกดปุ่มบันทึก (POST)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
