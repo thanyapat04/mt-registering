@@ -10,7 +10,6 @@ try {
         $stmt = $db->query("SELECT username, password FROM users");
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
- 
         // ตรวจสอบว่าแบบฟอร์มถูกส่งด้วย POST หรือไม่
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $_POST["username"];
