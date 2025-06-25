@@ -53,7 +53,7 @@ $schedule = $db->query("SELECT * FROM schedule WHERE id = 1")->fetch(PDO::FETCH_
         <div class="two fields">
             <div class="field">
                 <label>วันที่</label>
-                <input type="date" name="date" value="<?= htmlspecialchars($schedule['date']) ?>" required>
+                <input type="text" name="date" value="<?= htmlspecialchars($schedule['date']) ?>" required>
             </div>
             <div class="field">
                 <label>เวลาเริ่ม</label>
