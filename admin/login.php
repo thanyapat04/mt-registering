@@ -35,15 +35,25 @@ try {
                         
                         $stmt->execute();
                         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                        
+                        if (password_verify($password, $user['password'])) {
+                                $_SESSION["user"] = $user["username"];
+                                header("Location: detail.php");
+                                exit();
+                        } else {
+                                $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+                        }
+                        
+                } else {
+                        if (password_verify($password, $user['password'])) {
+                                $_SESSION["user"] = $user["username"];
+                                header("Location: detail.php");
+                                exit();
+                        } else {
+                                $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+                        }
                 }
                 
-                if (password_verify($password, $user['password'])) {
-                        $_SESSION["user"] = $user["username"];
-                        header("Location: detail.php");
-                        exit();
-                } else {
-                        $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-                }
                 
              } else {
                     $error = "ไม่พบชื่อผู้ใช้ในระบบ";
