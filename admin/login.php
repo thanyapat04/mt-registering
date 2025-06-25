@@ -20,35 +20,35 @@ try {
             $stmt->execute();
                 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            $plain_pw = $user['password'];
+
+            if ($user) {
+                $plain_pw = $user['password'];
                 
-            if (!preg_match('/^\$2y\$/', $plain_pw)) {
-                $hashed = password_hash($plain_pw, PASSWORD_DEFAULT);
-        
-                $update = $db->prepare("UPDATE users SET password = :hashed WHERE username = :username");
-                $update->execute([
-                    ':hashed' => $hashed,
-                    ':username' => $user['username']
-                ]);
-                    
-                if ($user && password_verify($password, $user['password'])) {
-                    $_SESSION["user"] = $user["username"];
-                    header("Location: detail.php"); // เปลี่ยนไปหน้าหลังล็อกอิน
-                    exit();
-                } else {
-                    $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-                    }
-                    
-            } else {
-                if ($user && password_verify($password, $user['password'])) {
-                    $_SESSION["user"] = $user["username"];
-                    header("Location: detail.php"); // เปลี่ยนไปหน้าหลังล็อกอิน
-                    exit();
-                } else {
-                    $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+                if (!preg_match('/^\$2y\$/', $plain_pw)) {
+                        $hashed = password_hash($plain_pw, PASSWORD_DEFAULT);
+                
+                        $update = $db->prepare("UPDATE users SET password = :hashed WHERE username = :username");
+                        $update->execute([
+                            ':hashed' => $hashed,
+                            ':username' => $user['username']
+                        ]);
+                        
+                        $stmt->execute();
+                        $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 }
-            }
-            
+                
+                if (password_verify($password, $user['password'])) {
+                        $_SESSION["user"] = $user["username"];
+                        header("Location: detail.php");
+                        exit();
+                } else {
+                        $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+                }
+                
+             } else {
+                    $error = "ไม่พบชื่อผู้ใช้ในระบบ";
+             }
+
         }
     } catch (PDOException $e) {
         $error = "เกิดข้อผิดพลาด: " . htmlspecialchars($e->getMessage());
