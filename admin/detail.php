@@ -75,7 +75,7 @@ $schedule = $db->query("SELECT * FROM schedule WHERE id = 1")->fetch(PDO::FETCH_
                 <input type="text" name="floor" value="<?= htmlspecialchars($schedule['floor']) ?>">
             </div>
             <div class="field">
-                <label>อาคาร</label>
+                <label>สถานที่ <span style="color: gray;"> (เช่น อาคารสำนักงานใหญ่)</span></label>
                 <input type="text" name="building" value="<?= htmlspecialchars($schedule['building']) ?>">
             </div>
         </div>
