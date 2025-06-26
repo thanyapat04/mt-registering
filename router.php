@@ -14,6 +14,12 @@ if ($path === '/' || $path === '/index.html') {
     exit;
 }
 
+// กรณีเข้า "/admin" → redirect ไป login.php
+if ($path === '/admin' || $path === '/admin/') {
+    readfile(__DIR__ . '/admin/index.html');
+    exit();
+}
+
 // ถ้าเป็นไฟล์ PHP ที่มีอยู่ → เรียกมัน
 if (file_exists($file) && pathinfo($file, PATHINFO_EXTENSION) === 'php') {
     include $file;
