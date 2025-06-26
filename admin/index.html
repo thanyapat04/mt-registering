@@ -1,15 +1,13 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to Login</title>
-    <!-- Redirect to login.php immediately -->
-    <meta http-equiv="refresh" content="0;url=/admin/login.php">
+    <title>Redirecting to Login</title>
+    <meta http-equiv="refresh" content="0;url=login.php">
+    <script>
+        window.location.href = "login.php";
+    </script>
 </head>
 <body>
-    <p>กำลังโหลดหน้าเข้าสู่ระบบ...</p>
-    <script>
-        window.location.href = "/admin/login.php";
-    </script>
+    <p>กำลังเชื่อมไปยังหน้าเข้าสู่ระบบ...</p>
 </body>
 </html>
