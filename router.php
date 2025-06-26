@@ -14,6 +14,11 @@ if ($path === '/' || $path === '/index.html') {
     exit;
 }
 
+if ($path === '/admin') {
+    header("Location: /admin/");
+    exit;
+}
+
 // กรณีเข้า "/admin" → redirect ไป login.php
 if ($path === '/admin' || $path === '/admin/') {
     include __DIR__ . '/admin/index.html';
