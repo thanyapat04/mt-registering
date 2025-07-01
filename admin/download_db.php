@@ -1,5 +1,5 @@
 <?php
-define('DB_PATH', '/tmp/RegisterForm.db'); // ตำแหน่งฐานข้อมูลชั่วคราว
+define('DB_PATH', '/data/RegisterForm.db'); // ตำแหน่งฐานข้อมูลชั่วคราว
 define('DB_URL', getenv('DB_URL'));  // ดึงจาก Environment Variable
 
 if (!file_exists(DB_PATH)) {
