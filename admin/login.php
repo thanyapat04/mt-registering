@@ -3,7 +3,7 @@ session_start();
 ob_start();
 try {
         // เชื่อมต่อกับไฟล์ SQLite 
-        require_once __DIR__ . '/download_db.php';
+        require_once __DIR__ . '../download_db.php';
         
         $error = "";
 
