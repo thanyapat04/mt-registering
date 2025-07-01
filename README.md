@@ -46,9 +46,10 @@
 #### ขั้นตอนการตั้งค่า
 
 1.  **สร้าง Environment Variable**
-    สร้าง Environment Variable ชื่อ DB_URL ของโปรเจกต์บน Render และกำหนด Value เป็น URL สำหรับดาวน์โหลดฐานข้อมูลของเราใน 
+    เข้าไปที่ Manage ของ Web Service ที่สร้างบน Render และเลือก Environment
+    สร้าง Environment Variable ชื่อ DB_URL และกำหนด Value เป็น URL สำหรับดาวน์โหลดฐานข้อมูลของเรา 
 
-2.  **แก้ไข Google Apps Script URL**
+3.  **แก้ไข Google Apps Script URL**
     เปิดไฟล์ `register.php` และ `register_manual.php` และแก้ไขตัวแปร `$url` ให้เป็น URL ของเราเอง:
 
     ```php
