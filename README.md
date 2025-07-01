@@ -19,16 +19,16 @@
 ## โครงสร้างโปรเจกต์ (Structure)
 
 ```
-├── Dockerfile
+├── Dockerfile            # install php เนื่องจาก Render ไม่สามารถรัน php ได้
 ├── admin
-│   ├── detail.php        # หน้าแก้ไขรายละเอียดการประชุม
-│   ├── index.html        # redirect ไปยังหน้า login
-│   └── login.php         # หน้าล็อกอินสำหรับเจ้าหน้าที่
-├── download_db.php         # ดาวน์โหลด DB 
-├── index.html              # หน้าแรก แสดงข้อมูลการประชุมและฟอร์มลงทะเบียน
-├── register.php            # ประมวลผลการลงทะเบียนโดยค้นหาจาก DB
-├── register_manual.php     # ประมวลผลการลงทะเบียนโดยผู้เข้าร่วมประชุมกรอกข้อมูลเอง
-└── router.php              # Router สำหรับ PHP built-in server
+│   ├── detail.php           # หน้าแก้ไขรายละเอียดการประชุม
+│   ├── index.html           # redirect ไปยังหน้า login
+│   └── login.php            # หน้าล็อกอินสำหรับเจ้าหน้าที่
+├── download_db.php       # ดาวน์โหลด DB 
+├── index.html            # หน้าแรก แสดงข้อมูลการประชุมและฟอร์มลงทะเบียน
+├── register.php          # ประมวลผลการลงทะเบียนโดยค้นหาจาก DB
+├── register_manual.php   # ประมวลผลการลงทะเบียนโดยผู้เข้าร่วมประชุมกรอกข้อมูลเอง
+└── router.php            # Router สำหรับ PHP built-in server
 ```
 
 ## การตั้งค่าและการติดตั้ง (Setup and Installation)
