@@ -5,6 +5,12 @@ if (!isset($_SESSION["user"])) {
     exit();
 }
 
+// สร้าง CSRF token
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrf_token = $_SESSION['csrf_token'];
+
 // เชื่อมต่อกับไฟล์ SQLite 
         require_once __DIR__ . '/../download_db.php';
 
