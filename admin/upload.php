@@ -55,6 +55,12 @@
 <script>
     $('.ui.radio.checkbox').checkbox();
 </script>
+<script>
+    function clearFile() {
+        const fileInput = document.getElementById('datafile');
+        fileInput.value = ''; // ล้างไฟล์ที่เลือก
+    }
+</script>
 
 </body>
 </html>
