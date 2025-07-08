@@ -23,6 +23,9 @@
         <div class="field">
             <label>เลือกไฟล์ (.csv)</label>
             <input type="file" name="datafile" accept=".csv" required>
+            <button type="button" class="ui red button" onclick="clearFile()">
+            <i class="trash alternate outline icon"></i> ล้างไฟล์
+        </button>
         </div>
 
         <div class="inline fields">
