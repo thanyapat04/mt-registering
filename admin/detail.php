@@ -12,7 +12,7 @@ if (empty($_SESSION['csrf_token'])) {
 $csrf_token = $_SESSION['csrf_token'];
 
 // เชื่อมต่อกับไฟล์ SQLite 
-        require_once __DIR__ . '/../download_db.php';
+require_once __DIR__ . '/../download_db.php';
 
 // เมื่อกดปุ่มบันทึก (POST)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
