@@ -5,8 +5,8 @@
 </head>
 <body>
     <h2>อัปโหลดไฟล์พนักงาน (.csv)</h2>
-    <form action="import_employee.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="datafile" accept=".csv,.xlsx" required><br><br>
+    <form action="import.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="datafile" accept=".csv" required><br><br>
 
         <label><input type="radio" name="mode" value="replace" checked> แทนที่ข้อมูลเดิม</label><br>
         <label><input type="radio" name="mode" value="append"> เพิ่มข้อมูล</label><br><br>
