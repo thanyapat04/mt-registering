@@ -87,6 +87,8 @@ $schedule = $db->query("SELECT * FROM schedule WHERE id = 1")->fetch(PDO::FETCH_
         </div>
 
         <button class="ui primary button" type="submit">บันทึก</button>
+
+        <a href="upload.php" class="ui button">อัปเดตข้อมูลพนักงาน</a>
         <a href="logout.php" class="ui button">ออกจากระบบ</a>
     </form>
 </div>
