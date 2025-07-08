@@ -23,9 +23,6 @@
         <div class="field">
             <label>เลือกไฟล์ (.csv)</label>
             <input type="file" name="datafile" accept=".csv" required>
-            <button type="button" class="ui red button" onclick="clearFile()">
-            <i class="trash alternate outline icon"></i> ล้างไฟล์
-        </button>
         </div>
 
         <div class="inline fields">
@@ -45,6 +42,9 @@
 
         <button class="ui primary button" type="submit">
             <i class="upload icon"></i> อัปโหลด
+        </button>
+        <button type="button" class="ui red button" onclick="clearFile()">
+            <i class="trash alternate outline icon"></i> ล้างไฟล์
         </button>
         <a href="detail.php" class="ui button">ย้อนกลับ</a>
     </form>
