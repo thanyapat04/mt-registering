@@ -1,5 +1,5 @@
 <?php
-$db = new PDO('sqlite:../meeting.db');
+$db = new PDO('sqlite:../RegisterForm.db');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (!isset($_FILES['datafile']) || $_FILES['datafile']['error'] !== UPLOAD_ERR_OK) {
