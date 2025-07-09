@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $firstRow = fgetcsv($handle);
 
             if (!$firstRow) {
-                exit("ไม่พบข้อมูลในไฟล์");
+                exit("อัปโหลดไม่สำเร็จ: ไม่พบข้อมูลในไฟล์");
             }
 
             if (count($firstRow) < 5) {
-                exit("ไฟล์ควรมีอย่างน้อย 5 คอลัมน์");
+                exit("อัปโหลดไม่สำเร็จ: ไฟล์ควรมีอย่างน้อย 5 คอลัมน์");
             }
             fclose($handle);
             
