@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "กรุณาเลือกไฟล์ที่ต้องการอัปโหลด";
     }
-
+}
 // ลบข้อมูลเดิมถ้าเลือก replace
 if ($mode === 'replace') {
     $db->exec("DELETE FROM employee");
