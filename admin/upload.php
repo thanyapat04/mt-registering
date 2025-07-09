@@ -21,7 +21,7 @@
 
     <form class="ui form" action="import.php" method="post" enctype="multipart/form-data">
         <div class="field">
-            <label>เลือกไฟล์ (.csv) <span style="color: gray;"> ไฟล์ควรมีคอลัมน์ emp_id, emp_name, position, sec_short, cc_name ตามลำดับ</span></label>
+            <label>เลือกไฟล์ (.csv) <span style="color: gray;"> ไฟล์ควรมีข้อมูล รหัสพนักงาน, ชื่อ-นามสกุล, ตำแหน่ง, ส่วนงานย่อ, ชื่อศูนย์ต้นทุน ตามลำดับ</span></label>
             <input type="file" name="datafile" accept=".csv" required>
         </div>
 
