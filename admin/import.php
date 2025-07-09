@@ -35,5 +35,5 @@ if ($mode === 'replace') {
 // เตรียม insert
 $stmt = $db->prepare("INSERT INTO employee (emp_id, emp_name, position, sec_short, cc_name) VALUES (?, ?, ?, ?, ?)");
 
-echo "นำเข้าข้อมูลพนักงานเรียบร้อยแล้ว<br>";
+echo "อัปเดตข้อมูลเรียบร้อยแล้ว<br>";
 echo '<a href="upload.php">ย้อนกลับ</a>';
