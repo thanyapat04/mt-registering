@@ -1,33 +1,31 @@
 <?php
 require_once __DIR__ . '/../download_db.php';
 
-if (!isset($_FILES['datafile']) || $_FILES['datafile']['error'] !== UPLOAD_ERR_OK) {
-    die("อัปโหลดไฟล์ล้มเหลว");
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_FILES['datafile']) && $_FILES['datafile']['error'] === UPLOAD_ERR_OK) {
+        $tmpName = $_FILES['datafile']['tmp_name'];
+        $ext = pathinfo($_FILES['datafile']['name'], PATHINFO_EXTENSION);
 
-$mode = $_POST['mode'] ?? 'replace';
-$tmpName = $_FILES['datafile']['tmp_name'];
-$filename = $_FILES['datafile']['name'];
+        // อ่านข้อมูลจากไฟล์
+        if ($ext === 'csv') {
+            $handle = fopen($tmpName, 'r');
+            $firstRow = fgetcsv($handle);
 
-$data = [];
+            if (!$firstRow) {
+                exit("ไม่มีพบข้อมูลในไฟล์");
+            }
 
-// อ่าน CSV
-$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
-if ($ext === 'csv') {
-    if (($handle = fopen($tmpName, 'r')) !== false) {
-        while (($row = fgetcsv($handle)) !== false) {
-            $data[] = $row;
+            if (count($firstRow) < 5) {
+                exit("ไฟล์ควรมีอย่างน้อย 5 คอลัมน์");
+            }
+            fclose($handle);
+            
+        } else {
+            exit("รองรับเฉพาะไฟล์ .csv เท่านั้น");
         }
-        fclose($handle);
+    } else {
+        echo "กรุณาเลือกไฟล์ที่ต้องการอัปโหลด";
     }
-} else {
-    die("รองรับเฉพาะ .csv เท่านั้น");
-}
-
-if (count($data) < 2) {
-    die("ไม่มีข้อมูลในไฟล์");
-}
 
 // ลบข้อมูลเดิมถ้าเลือก replace
 if ($mode === 'replace') {
