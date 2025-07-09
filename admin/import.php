@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $firstRow = fgetcsv($handle);
 
             if (!$firstRow) {
-                exit("ไม่มีพบข้อมูลในไฟล์");
+                exit("ไม่พบข้อมูลในไฟล์");
             }
 
             if (count($firstRow) < 5) {
