@@ -38,8 +38,9 @@
             echo '<p>ส่วนงานย่อ: ' . htmlspecialchars($row['sec_short'] ?? 'ไม่ระบุ') . '</p>';
             echo '<p>ชื่อศูนย์ต้นทุน: ' . htmlspecialchars($row['cc_name'] ?? 'ไม่ระบุ') . '</p>';
             echo '</div>';
-		
-	    $url = "https://script.google.com/macros/s/AKfycbyQcNpLCgjbeVAfGZwmK9suB5OuWPyGl2W5UJ98tIqumUk2-Yu9w9a-UzhjTjhtvcM/exec";
+
+	    define('Sheet', getenv('Sheet'));	
+	    //$url = "https://script.google.com/macros/s/AKfycbyQcNpLCgjbeVAfGZwmK9suB5OuWPyGl2W5UJ98tIqumUk2-Yu9w9a-UzhjTjhtvcM/exec";
 	    $data = array(
                 'รหัสพนักงาน' => $emp_id,
                 'ชื่อ' => $row['emp_name'],
@@ -57,7 +58,7 @@
             );
 
             $context = stream_context_create($options);
-            $result = file_get_contents($url, false, $context);
+            $result = file_get_contents(Sheet, false, $context);
 		
         } else {
             echo '<div class="ui negative message">';
