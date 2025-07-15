@@ -28,8 +28,7 @@
         }
 
         // ส่งข้อมูลไป Google Apps Script (ให้ตรงกับ Sheets)
-        // ตรวจสอบให้แน่ใจว่า URL นี้รับข้อมูลประเภทนี้ได้
-        $url = "https://script.google.com/macros/s/AKfycbyQcNpLCgjbeVAfGZwmK9suB5OuWPyGl2W5UJ98tIqumUk2-Yu9w9a-UzhjTjhtvcM/exec"; 
+        $url = getenv('APPSCRIPT_URL');
         $data = array(
             'รหัสพนักงาน' => $new_emp_id, 
             'ชื่อ' => $new_emp_name,
