@@ -44,7 +44,7 @@
             <i class="upload icon"></i> อัปโหลด
         </button>
         <button type="button" class="ui red button" onclick="clearFile()">
-            <i class="trash alternate outline icon"></i> ล้างไฟล์
+            <i class="trash alternate outline icon"></i> ลบไฟล์ที่เลือก
         </button>
         <a href="detail.php" class="ui button">ย้อนกลับ</a>
     </form>
