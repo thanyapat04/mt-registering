@@ -106,3 +106,205 @@
 
       * `username` (TEXT, UNIQUE): ชื่อผู้ใช้
       * `password` (TEXT): รหัสผ่าน (เก็บในรูปแบบ Hashed ด้วย `password_hash`)
+
+--------------------------------------------------------------------------------------
+
+# Meeting Registration System
+
+This project is a PHP-based web application designed for meeting registration and attendance management. It allows participants to register for a meeting using their employee ID, while administrators can manage meeting details through a secure backend system.
+
+All registration records are automatically sent to Google Apps Script and stored in Google Sheets in real time.
+
+## Key Features
+
+* **Display Meeting Information**
+
+  * Show meeting topic, date, time, and location on the main registration page.
+
+* **Employee ID Registration**
+
+  * Participants can enter their employee ID to retrieve their information from the SQLite database and complete registration.
+
+* **Manual Registration**
+
+  * If an employee ID is not found in the database, participants can manually enter their information and register.
+
+* **Google Sheets Integration**
+
+  * Successful registrations are automatically submitted to a Google Apps Script endpoint and recorded in Google Sheets.
+
+* **Admin Management System**
+
+  * Secure admin login page (`/admin`)
+  * Edit meeting details through the administration panel
+  * Passwords are securely stored using PHP password hashing
+
+* **Database Management**
+
+  * Automatically downloads the SQLite database file from a URL specified in an environment variable.
+
+---
+
+## Project Structure
+
+```text
+├── Dockerfile              # Installs PHP since Render does not natively support PHP applications
+├── admin
+│   ├── detail.php          # Meeting details management page
+│   ├── index.html          # Redirects to login page
+│   └── login.php           # Admin login page
+├── download_db.php         # Downloads the SQLite database
+├── index.html              # Main page displaying meeting information and registration form
+├── register.php            # Handles registration using employee data from the database
+├── register_manual.php     # Handles manual registration
+└── router.php              # Router for PHP built-in server
+```
+
+---
+
+## Setup and Installation
+
+### Prerequisites
+
+* Docker and Docker Compose
+* OR PHP 8.0+ with the `pdo_sqlite` extension installed
+
+---
+
+## Configuration
+
+### 1. Environment Variable: `DB_URL`
+
+Provide a publicly accessible URL that points to the SQLite database file (`.db`). The database must contain the following tables:
+
+* `employee`
+* `schedule`
+* `users`
+
+### 2. Google Apps Script URL
+
+The Google Apps Script Web App URL is hardcoded in both `register.php` and `register_manual.php`. Replace it with your own deployed Apps Script URL.
+
+```php
+$url = "https://script.google.com/macros/s/YOUR_APPS_SCRIPT_ID/exec";
+```
+
+---
+
+## Configuration Steps
+
+### Step 1: Create the Environment Variable
+
+In your Render Web Service dashboard:
+
+1. Navigate to **Manage → Environment**
+2. Create a new environment variable named:
+
+```text
+DB_URL
+```
+
+3. Set its value to the public URL where your SQLite database file can be downloaded.
+
+### Step 2: Update the Google Apps Script URL
+
+Open the following files:
+
+* `register.php`
+* `register_manual.php`
+
+Replace the existing URL with your own Google Apps Script Web App URL:
+
+```php
+$url = "https://script.google.com/macros/s/YOUR_APPS_SCRIPT_ID/exec";
+```
+
+---
+
+## Running the Project with PHP Built-in Server (Development)
+
+### 1. Set the Environment Variable
+
+**Linux/macOS**
+
+```bash
+export DB_URL="https://your-public-url.com/path/to/RegisterForm.db"
+```
+
+**Windows (Command Prompt)**
+
+```cmd
+set DB_URL="https://your-public-url.com/path/to/RegisterForm.db"
+```
+
+### 2. Start the Server
+
+```bash
+php -S localhost:8000
+```
+
+### 3. Access the Application
+
+* Registration page:
+
+  * http://localhost:8000
+
+* Admin page:
+
+  * http://localhost:8000/admin
+
+---
+
+## Database Schema
+
+The SQLite database file (`RegisterForm.db`) should contain the following tables.
+
+### `employee`
+
+Stores employee information.
+
+| Column    | Type      | Description             |
+| --------- | --------- | ----------------------- |
+| emp_id    | TEXT (PK) | Employee ID             |
+| emp_name  | TEXT      | Employee full name      |
+| position  | TEXT      | Position/Job title      |
+| sec_short | TEXT      | Department abbreviation |
+| cc_name   | TEXT      | Cost center name        |
+
+---
+
+### `schedule`
+
+Stores meeting details. This table is expected to contain a single record.
+
+| Column     | Type         | Description                        |
+| ---------- | ------------ | ---------------------------------- |
+| id         | INTEGER (PK) | Record ID (typically set to 1)     |
+| topic      | TEXT         | Meeting topic                      |
+| date       | TEXT         | Meeting date (e.g., June 30, 2025) |
+| start_time | TEXT         | Start time (HH:MM)                 |
+| end_time   | TEXT         | End time (HH:MM)                   |
+| room       | TEXT         | Meeting room                       |
+| floor      | TEXT         | Floor                              |
+| building   | TEXT         | Building or venue                  |
+
+---
+
+### `users`
+
+Stores administrator login credentials.
+
+| Column   | Type          | Description                             |
+| -------- | ------------- | --------------------------------------- |
+| username | TEXT (UNIQUE) | Username                                |
+| password | TEXT          | Password hashed using `password_hash()` |
+
+---
+
+## Deployment Notes
+
+* The application is designed to run on Render using Docker.
+* The SQLite database is not stored within the application repository.
+* On startup, the application downloads the latest database file from the URL specified in `DB_URL`.
+* Registration data is recorded externally via Google Apps Script and Google Sheets.
+* Administrator passwords should always be stored using PHP's `password_hash()` function for security.
