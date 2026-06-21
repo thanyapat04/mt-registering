@@ -295,7 +295,7 @@ Stores administrator login credentials.
 | password | TEXT          | Password hashed using `password_hash()` |
 
 
-## Deployment Notes
+## Notes
 
 * The application is designed to run on Render using Docker.
 * The SQLite database is not stored within the application repository.
