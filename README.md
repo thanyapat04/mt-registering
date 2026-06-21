@@ -107,7 +107,10 @@
       * `username` (TEXT, UNIQUE): ชื่อผู้ใช้
       * `password` (TEXT): รหัสผ่าน (เก็บในรูปแบบ Hashed ด้วย `password_hash`)
 
---------------------------------------------------------------------------------------
+
+---
+
+
 
 # Meeting Registration System
 
@@ -143,7 +146,6 @@ All registration records are automatically sent to Google Apps Script and stored
 
   * Automatically downloads the SQLite database file from a URL specified in an environment variable.
 
----
 
 ## Project Structure
 
@@ -160,7 +162,6 @@ All registration records are automatically sent to Google Apps Script and stored
 └── router.php              # Router for PHP built-in server
 ```
 
----
 
 ## Setup and Installation
 
@@ -169,7 +170,6 @@ All registration records are automatically sent to Google Apps Script and stored
 * Docker and Docker Compose
 * OR PHP 8.0+ with the `pdo_sqlite` extension installed
 
----
 
 ## Configuration
 
@@ -189,7 +189,6 @@ The Google Apps Script Web App URL is hardcoded in both `register.php` and `regi
 $url = "https://script.google.com/macros/s/YOUR_APPS_SCRIPT_ID/exec";
 ```
 
----
 
 ## Configuration Steps
 
@@ -219,7 +218,6 @@ Replace the existing URL with your own Google Apps Script Web App URL:
 $url = "https://script.google.com/macros/s/YOUR_APPS_SCRIPT_ID/exec";
 ```
 
----
 
 ## Running the Project with PHP Built-in Server (Development)
 
@@ -253,7 +251,6 @@ php -S localhost:8000
 
   * http://localhost:8000/admin
 
----
 
 ## Database Schema
 
@@ -271,7 +268,6 @@ Stores employee information.
 | sec_short | TEXT      | Department abbreviation |
 | cc_name   | TEXT      | Cost center name        |
 
----
 
 ### `schedule`
 
@@ -288,7 +284,6 @@ Stores meeting details. This table is expected to contain a single record.
 | floor      | TEXT         | Floor                              |
 | building   | TEXT         | Building or venue                  |
 
----
 
 ### `users`
 
@@ -299,7 +294,6 @@ Stores administrator login credentials.
 | username | TEXT (UNIQUE) | Username                                |
 | password | TEXT          | Password hashed using `password_hash()` |
 
----
 
 ## Deployment Notes
 
